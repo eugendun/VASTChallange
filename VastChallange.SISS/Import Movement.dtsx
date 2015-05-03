@@ -1,0 +1,2819 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/1/2015 3:26:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RAPDEV"
+  DTS:CreatorName="RAPDEV\Katja"
+  DTS:DTSID="{5DF0E8B3-BCA0-4D2B-918C-8D396172412D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Import Movement"
+  DTS:PackageType="5"
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{5A5F094F-9671-443B-B95E-DAA2C957A8F9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D71AFEDE-4A4E-4955-B519-46A11675CD2E}"
+      DTS:ObjectName="(localdb)\ProjectsV12.VASTChallange">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(localdb)\ProjectsV12;Initial Catalog=VASTChallange;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A69731C2-9EAA-48CD-B15C-4EE58351AA86}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1031"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Vast-Challange\MC1 2015 Data\MC1 2015 Data\park-movement-Sun.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Timestamp"
+              DTS:DTSID="{906F02FA-5053-4F1C-A290-7CD2655708F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{AA996EE2-EE5C-437D-8FDD-A80198FCEB79}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="type"
+              DTS:DTSID="{372AF1C0-AE4B-416B-9EE1-2D81FF53C73B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="X"
+              DTS:DTSID="{3F48C258-AE42-41A7-9B5F-4CF41BFC0B99}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Y"
+              DTS:DTSID="{04DC3B87-2730-4D59-9B93-93CB13925A6E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import Movement"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{058E986E-F08A-4ECF-9380-56B478E80FEC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Movement"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Movement\CSV Input"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1031"
+              name="CSV Input"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\CSV Input.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[Timestamp]"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]"
+                      name="Timestamp"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      length="50"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]"
+                      name="type"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[X]"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]"
+                      name="X"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[Y]"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]"
+                      name="Y"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[Timestamp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[X]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="X" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].ExternalColumns[Y]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Y" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Timestamp]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Timestamp]"
+                      name="Copy of Timestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]"
+                      name="Copy of id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of X]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of X]"
+                      name="Copy of X"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Y]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Y]"
+                      name="Copy of Y"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      length="50"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of type]"
+                      name="Copy of type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Movement Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Movement Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Movements]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\Movement Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      externalMetadataColumnId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Timestamp]"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Timestamp]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      externalMetadataColumnId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of type]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      externalMetadataColumnId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[X]"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of X]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      externalMetadataColumnId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Y]"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Y]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      externalMetadataColumnId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Visitor_Id]"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Timestamp]"
+                      dataType="dbTimeStamp"
+                      name="Timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[X]"
+                      dataType="i4"
+                      name="X" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Y]"
+                      dataType="i4"
+                      name="Y" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input].ExternalColumns[Visitor_Id]"
+                      dataType="i4"
+                      name="Visitor_Id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Movement Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Movement Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Movement Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Movement Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Movement Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Import Movement\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Movement\Multicast.Outputs[Multicast Output 3]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Import Movement\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Movement\Multicast.Outputs[Multicast Output 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Import Movement\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Sort.Inputs[Sort Input].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Timestamp]"
+                      name="Timestamp">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[id]"
+                      name="id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[X]"
+                      name="X">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Y]"
+                      name="Y">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of Timestamp]"
+                      name="Copy of Timestamp">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of id]"
+                      name="Copy of id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of X]"
+                      name="Copy of X">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of Y]"
+                      name="Copy of Y">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of type]"
+                      name="Copy of type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Timestamp]"
+                      name="Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All 1"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 1"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[Flat File Source Error Output Column]"
+                      cachedCodepage="65001"
+                      cachedDataType="text"
+                      cachedName="Flat File Source Error Output Column"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Flat File Source Error Output Column]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 1.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All 2"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 2"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All 2.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 2.Inputs[Union All Input 1].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]"
+                      name="Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      name="Copy of Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]"
+                      name="Copy of id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]"
+                      name="Copy of X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      name="Copy of Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]"
+                      name="Copy of type" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All 3"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 3"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All 3.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 3.Inputs[Union All Input 1].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of type]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Timestamp]"
+                      name="Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      name="Copy of Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of id]"
+                      name="Copy of id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of X]"
+                      name="Copy of X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      name="Copy of Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of type]"
+                      name="Copy of type" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All 4"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 4"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 3].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      lineageId="Package\Import Movement\Union All 2.Outputs[Union All Output 1].Columns[Copy of type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of type]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Timestamp"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="type"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i1"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i1"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Copy of Timestamp]"
+                      cachedDataType="date"
+                      cachedName="Copy of Timestamp"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Copy of X]"
+                      cachedDataType="i1"
+                      cachedName="Copy of X"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Copy of Y]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Y"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 4.Inputs[Union All Input 1].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of type"
+                      lineageId="Package\Import Movement\Union All 3.Outputs[Union All Output 1].Columns[Copy of type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of type]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 4.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Timestamp]"
+                      name="Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Timestamp]"
+                      name="Copy of Timestamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of id]"
+                      name="Copy of id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of X]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of X]"
+                      name="Copy of X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      dataType="i1"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of Y]"
+                      name="Copy of Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 4.Outputs[Union All Output 1].Columns[Copy of type]"
+                      name="Copy of type" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Visitor Exist"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Visitor Exist"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Visitors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Visitors]) [refTable]
+where [refTable].[Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\Visitor Exist.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      lineageId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Visitor Exist.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Movement\Visitor Exist.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Movement\Visitor Exist.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Visitor Exist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Visitor Exist.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Visitor Exist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Visitor Exist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Visitor Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Visitor Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Visitors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\Visitor Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input].Columns[Copy of id]"
+                      cachedDataType="i4"
+                      cachedName="Copy of id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import Movement\Sort.Outputs[Sort Output].Columns[Copy of id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Visitor Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Visitor Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Visitor Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Visitor Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Visitor Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Movement.Paths[Data Conversion Error Output]"
+              endId="Package\Import Movement\Union All.Inputs[Union All Input 1]"
+              name="Data Conversion Error Output"
+              startId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Error Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Data Conversion Output]"
+              endId="Package\Import Movement\Visitor Exist.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Import Movement\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Flat File Source Error Output]"
+              endId="Package\Import Movement\Union All 1.Inputs[Union All Input 1]"
+              name="Flat File Source Error Output"
+              startId="Package\Import Movement\CSV Input.Outputs[Flat File Source Error Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Flat File Source Output]"
+              endId="Package\Import Movement\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Movement\CSV Input.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Lookup Match Output]"
+              endId="Package\Import Movement\Union All 3.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Import Movement\Visitor Exist.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Lookup No Match Output]"
+              endId="Package\Import Movement\Union All 2.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Import Movement\Visitor Exist.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Multicast Output 1]"
+              endId="Package\Import Movement\Union All 4.Inputs[Union All Input 3]"
+              name="Multicast Output 1"
+              startId="Package\Import Movement\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Import Movement.Paths[Multicast Output 3]"
+              endId="Package\Import Movement\Sort.Inputs[Sort Input]"
+              name="Multicast Output 3"
+              startId="Package\Import Movement\Multicast.Outputs[Multicast Output 3]" />
+            <path
+              refId="Package\Import Movement.Paths[Sort Output]"
+              endId="Package\Import Movement\Visitor Table.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\Import Movement\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Import Movement.Paths[Union All Output 1]"
+              endId="Package\Import Movement\Multicast.Inputs[Multicast Input 1]"
+              name="Union All Output 1"
+              startId="Package\Import Movement\Union All 2.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Import Movement.Paths[Union All Output 11]"
+              endId="Package\Import Movement\Union All 4.Inputs[Union All Input 1]"
+              name="Union All Output 1"
+              startId="Package\Import Movement\Union All 3.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Import Movement.Paths[Union All Output 12]"
+              endId="Package\Import Movement\Movement Table.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Import Movement\Union All 4.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Import Movement"
+          TopLeft="427,227" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Movement">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Import Movement\Data Conversion"
+          TopLeft="363,135" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Movement\Union All 1"
+          TopLeft="691,13" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Movement\Union All 2"
+          TopLeft="559,389" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Movement\Union All 4"
+          TopLeft="437,753" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Movement\Movement Table"
+          TopLeft="421,869" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Import Movement\Union All"
+          TopLeft="696,134" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Import Movement\Visitor Exist"
+          TopLeft="379,259" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Movement\Union All 3"
+          TopLeft="210,393" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Import Movement\CSV Input"
+          TopLeft="377,18" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Import Movement\Visitor Table"
+          TopLeft="762,734" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Import Movement\Multicast"
+          TopLeft="565,498" />
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Union All Output 12]"
+          TopLeft="500.75,795">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Union All Output 11]"
+          TopLeft="275,435">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="195,318"
+              Start="0,0"
+              End="195,310.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,161"
+                    Point2="0,165"
+                    Point3="4,165" />
+                  <mssgle:LineSegment
+                    End="191,165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="191,165"
+                    Point2="195,165"
+                    Point3="195,169" />
+                  <mssgle:LineSegment
+                    End="195,310.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Union All Output 1]"
+          TopLeft="624.5,431">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Multicast Output 1]"
+          TopLeft="606.333333333333,540">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-84,213"
+              Start="0,0"
+              End="-84,205.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.632298136646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.632298136646"
+                    Point2="0,106.632298136646"
+                    Point3="-4,106.632298136646" />
+                  <mssgle:LineSegment
+                    End="-80,106.632298136646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-80,106.632298136646"
+                    Point2="-84,106.632298136646"
+                    Point3="-84,110.632298136646" />
+                  <mssgle:LineSegment
+                    End="-84,205.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Lookup No Match Output]"
+          TopLeft="467,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="157,88"
+              Start="0,0"
+              End="157,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.8230088495575" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.8230088495575"
+                    Point2="0,35.8230088495575"
+                    Point3="4,35.8230088495575" />
+                  <mssgle:LineSegment
+                    End="153,35.8230088495575" />
+                  <mssgle:CubicBezierSegment
+                    Point1="153,35.8230088495575"
+                    Point2="157,35.8230088495575"
+                    Point3="157,39.8230088495575" />
+                  <mssgle:LineSegment
+                    End="157,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.69361328125,40.8230088495575,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Lookup Match Output]"
+          TopLeft="425,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150,92"
+              Start="0,0"
+              End="-150,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4513274336283" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4513274336283"
+                    Point2="0,37.4513274336283"
+                    Point3="-4,37.4513274336283" />
+                  <mssgle:LineSegment
+                    End="-146,37.4513274336283" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-146,37.4513274336283"
+                    Point2="-150,37.4513274336283"
+                    Point3="-150,41.4513274336283" />
+                  <mssgle:LineSegment
+                    End="-150,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.19138671875,42.4513274336283,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Flat File Source Output]"
+          TopLeft="440.5,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Flat File Source Error Output]"
+          TopLeft="503,36.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188,0"
+              Start="0,0"
+              End="180.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="180.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="26.62361328125,5,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Data Conversion Output]"
+          TopLeft="443.5,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Data Conversion Error Output]"
+          TopLeft="519,155.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177,0"
+              Start="0,0"
+              End="169.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="169.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="18.66361328125,5,132.1727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Add new Visitor first"
+          ParentId="Package\Import Movement"
+          FontInfo="{assembly:Null}"
+          Size="136,40"
+          Id="862c6858-505f-4cd2-98a6-a93929d45143"
+          TopLeft="663,288" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Import Movement\Sort"
+          TopLeft="783,565" />
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Multicast Output 3]"
+          TopLeft="643.666666666667,540">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188.333333333333,25"
+              Start="0,0"
+              End="188.333333333333,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,6.19736842105264" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,6.19736842105264"
+                    Point2="0,10.1973684210526"
+                    Point3="4,10.1973684210526" />
+                  <mssgle:LineSegment
+                    End="184.333333333333,10.1973684210526" />
+                  <mssgle:CubicBezierSegment
+                    Point1="184.333333333333,10.1973684210526"
+                    Point2="188.333333333333,10.1973684210526"
+                    Point3="188.333333333333,14.1973684210526" />
+                  <mssgle:LineSegment
+                    End="188.333333333333,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[Sort Output]"
+          TopLeft="831.25,607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,127"
+              Start="0,0"
+              End="0,119.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,119.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Movement\Visitor Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

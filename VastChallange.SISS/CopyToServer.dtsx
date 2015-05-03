@@ -1,0 +1,1794 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/2/2015 4:23:00 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RAPDEV"
+  DTS:CreatorName="RAPDEV\Katja"
+  DTS:DTSID="{E4FA1B57-24A3-46CF-A6A8-656F8403D625}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="CopyToServer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{C55255B4-57A2-428D-861F-2E2099969638}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5A8EFD1D-E3B0-4303-A53D-46EBE3B88131}"
+      DTS:ObjectName="(localdb)\ProjectsV12.VASTChallange">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(localdb)\ProjectsV12;Initial Catalog=VASTChallange;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[81.169.178.229,14330.VASTChallange.Eugen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3CBB3873-D337-4ECA-AA48-24E7B3511D33}"
+      DTS:ObjectName="81.169.178.229,14330.VASTChallange.Eugen">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=81.169.178.229,14330;User ID=Eugen;Initial Catalog=VASTChallange;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvkUXPSjmqUSFA+FPjSGYfwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACx1hg3vJ9UHtwnvghuRl4+WZJX2BjiJZ3QoQmhConVqAAAAAAOgAAAAAIAACAAAAALrJWNMjw8ujLNOK9cYdTM2cj7+05APxVs3EOYMuDSaSAAAACwtAKDVb9lEnvvtgJbfsR65H765Jk8f61Ww1ECVnpQ8EAAAAC5HdHtRznAJyZei3vBDn2iKw4HzaXQxI/ttyVWugf6iU4Ge4Zb9Zra1Cw6c0vln9Rw+dtX2nuAYPncAlSJ//2P</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import CommData"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7E56225A-C6AD-4ED4-AC0F-1A2E58CA4507}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import CommData"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import CommData\Local CommData"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Local CommData"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CommData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import CommData\Local CommData.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[FromVisitorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[FromVisitorId]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[FromVisitorId]"
+                      name="FromVisitorId"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[ToVisitorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[ToVisitorId]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[ToVisitorId]"
+                      name="ToVisitorId"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="50"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      name="TimeStamp"
+                      truncationRowDisposition="RedirectRow" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[FromVisitorId]"
+                      dataType="i4"
+                      name="FromVisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[ToVisitorId]"
+                      dataType="i4"
+                      name="ToVisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      name="TimeStamp" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[FromVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[FromVisitorId]"
+                      name="FromVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ToVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ToVisitorId]"
+                      name="ToVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import CommData\Server Commdata"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Server Commdata"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CommData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import CommData\Server Commdata.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[81.169.178.229,14330.VASTChallange.Eugen]"
+                  connectionManagerRefId="Package.ConnectionManagers[81.169.178.229,14330.VASTChallange.Eugen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].Columns[FromVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="FromVisitorId"
+                      externalMetadataColumnId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[FromVisitorId]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[FromVisitorId]" />
+                    <inputColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].Columns[ToVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="ToVisitorId"
+                      externalMetadataColumnId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[ToVisitorId]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[ToVisitorId]" />
+                    <inputColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      externalMetadataColumnId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[TimeStamp]"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[TimeStamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[FromVisitorId]"
+                      dataType="i4"
+                      name="FromVisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[ToVisitorId]"
+                      dataType="i4"
+                      name="ToVisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input].ExternalColumns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      name="TimeStamp" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import CommData\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import CommData\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[FromVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="FromVisitorId"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[FromVisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[FromVisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[ToVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="ToVisitorId"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ToVisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ToVisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[TimeStamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[TimeStamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import CommData\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import CommData\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[FromVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[FromVisitorId]"
+                      name="FromVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ToVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ToVisitorId]"
+                      name="ToVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import CommData\Union All 1"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 1"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[FromVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="FromVisitorId"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[FromVisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[FromVisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[ToVisitorId]"
+                      cachedDataType="i4"
+                      cachedName="ToVisitorId"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[ToVisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ToVisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      lineageId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output].Columns[TimeStamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import CommData\Union All 1.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import CommData\Union All 1.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[FromVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[FromVisitorId]"
+                      name="FromVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ToVisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ToVisitorId]"
+                      name="ToVisitorId" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import CommData\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import CommData.Paths[OLE DB Destination Error Output]"
+              endId="Package\Import CommData\Union All 1.Inputs[Union All Input 1]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Import CommData\Server Commdata.Outputs[OLE DB Destination Error Output]" />
+            <path
+              refId="Package\Import CommData.Paths[OLE DB Source Error Output]"
+              endId="Package\Import CommData\Union All.Inputs[Union All Input 1]"
+              name="OLE DB Source Error Output"
+              startId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Error Output]" />
+            <path
+              refId="Package\Import CommData.Paths[OLE DB Source Output]"
+              endId="Package\Import CommData\Server Commdata.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import CommData\Local CommData.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Movement"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B10F3EF8-FF61-4E18-80A2-8407C1F200B3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Movement"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Movement\Local Movement"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Local Movement"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Movement]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\Local Movement.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\ProjectsV12.VASTChallange]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[VisitorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[VisitorId]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[VisitorId]"
+                      name="VisitorId"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      name="TimeStamp"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      length="50"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[X]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[X]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[X]"
+                      name="X"
+                      truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Y]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Y]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Y]"
+                      name="Y"
+                      truncationRowDisposition="RedirectRow" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[VisitorId]"
+                      dataType="i4"
+                      name="VisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      name="TimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[X]"
+                      dataType="i4"
+                      name="X" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].ExternalColumns[Y]"
+                      dataType="i4"
+                      name="Y" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[VisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[VisitorId]"
+                      name="VisitorId" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[X]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Y]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Server Movement"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Server Movement"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Movement]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Movement\Server Movement.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[81.169.178.229,14330.VASTChallange.Eugen]"
+                  connectionManagerRefId="Package.ConnectionManagers[81.169.178.229,14330.VASTChallange.Eugen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[VisitorId]"
+                      cachedDataType="i4"
+                      cachedName="VisitorId"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[VisitorId]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[VisitorId]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[TimeStamp]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[TimeStamp]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Type"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[X]"
+                      cachedDataType="i4"
+                      cachedName="X"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[X]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[X]" />
+                    <inputColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].Columns[Y]"
+                      cachedDataType="i4"
+                      cachedName="Y"
+                      externalMetadataColumnId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Y]"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Y]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[VisitorId]"
+                      dataType="i4"
+                      name="VisitorId" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      name="TimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[X]"
+                      dataType="i4"
+                      name="X" />
+                    <externalMetadataColumn
+                      refId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input].ExternalColumns[Y]"
+                      dataType="i4"
+                      name="Y" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[VisitorId]"
+                      cachedDataType="i4"
+                      cachedName="VisitorId"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[VisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[VisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[TimeStamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[TimeStamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Type"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i4"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i4"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[VisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[VisitorId]"
+                      name="VisitorId" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Movement\Union All 1"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All 1"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[VisitorId]"
+                      cachedDataType="i4"
+                      cachedName="VisitorId"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[VisitorId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[VisitorId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[TimeStamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeStamp"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[TimeStamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Type"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[X]"
+                      cachedDataType="i4"
+                      cachedName="X"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[X]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[X]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[Y]"
+                      cachedDataType="i4"
+                      cachedName="Y"
+                      lineageId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output].Columns[Y]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Y]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Movement\Union All 1.Inputs[Union All Input 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Import Movement\Union All 1.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[VisitorId]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[VisitorId]"
+                      name="VisitorId" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[X]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[X]"
+                      name="X" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Y]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[Y]"
+                      name="Y" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Movement\Union All 1.Outputs[Union All Output 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Movement.Paths[OLE DB Destination Error Output]"
+              endId="Package\Import Movement\Union All 1.Inputs[Union All Input 1]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Import Movement\Server Movement.Outputs[OLE DB Destination Error Output]" />
+            <path
+              refId="Package\Import Movement.Paths[OLE DB Source Error Output]"
+              endId="Package\Import Movement\Union All.Inputs[Union All Input 1]"
+              name="OLE DB Source Error Output"
+              startId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Error Output]" />
+            <path
+              refId="Package\Import Movement.Paths[OLE DB Source Output]"
+              endId="Package\Import Movement\Server Movement.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Movement\Local Movement.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A3AA0126-27E3-4A33-9D9B-D9E490E982AF}"
+      DTS:From="Package\Import CommData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import Movement" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Import CommData"
+          TopLeft="216,133" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Import Movement"
+          TopLeft="216,234" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="298.25,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import CommData">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Import CommData\Local CommData"
+          TopLeft="313,99" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Import CommData\Server Commdata"
+          TopLeft="310,322" />
+        <EdgeLayout
+          Id="Package\Import CommData.Paths[OLE DB Source Output]"
+          TopLeft="392,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,181"
+              Start="0,0"
+              End="0,173.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,173.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Import CommData\Union All"
+          TopLeft="672,97" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import CommData\Union All 1"
+          TopLeft="657,324" />
+        <EdgeLayout
+          Id="Package\Import CommData.Paths[OLE DB Destination Error Output]"
+          TopLeft="473,344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184,0"
+              Start="0,0"
+              End="176.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="176.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.04109375,5,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import CommData.Paths[OLE DB Source Error Output]"
+          TopLeft="472,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200,0"
+              Start="0,0"
+              End="192.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="192.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.81609375,5,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Import Movement">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Import Movement\Local Movement"
+          TopLeft="306,102" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Import Movement\Server Movement"
+          TopLeft="298,312" />
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[OLE DB Source Output]"
+          TopLeft="381.25,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,168"
+              Start="0,0"
+              End="0,160.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,160.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Import Movement\Union All"
+          TopLeft="654,106" />
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[OLE DB Source Error Output]"
+          TopLeft="461,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="193,0"
+              Start="0,0"
+              End="185.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="185.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.31609375,5,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Movement\Union All 1"
+          TopLeft="660,305" />
+        <EdgeLayout
+          Id="Package\Import Movement.Paths[OLE DB Destination Error Output]"
+          TopLeft="460,329.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200,0"
+              Start="0,0"
+              End="192.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="192.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.04109375,5,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import CommData\Local CommData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import CommData\Server Commdata">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Movement\Local Movement">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Movement\Server Movement">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
