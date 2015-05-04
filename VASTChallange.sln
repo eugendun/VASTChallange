@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VASTChallange.Core", "VASTC
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "VastChallange.SISS", "VastChallange.SISS\VastChallange.SISS.dtproj", "{497D097B-9F11-432F-89AD-5E8E0CBD0D40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VASTChallange.Console", "VASTChallange.Console\VASTChallange.Console.csproj", "{516220E2-0EB8-45D6-A3C7-F02764A9A825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,12 @@ Global
 		{497D097B-9F11-432F-89AD-5E8E0CBD0D40}.Development|Any CPU.Build.0 = Development
 		{497D097B-9F11-432F-89AD-5E8E0CBD0D40}.Release|Any CPU.ActiveCfg = Development
 		{497D097B-9F11-432F-89AD-5E8E0CBD0D40}.Release|Any CPU.Build.0 = Development
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{516220E2-0EB8-45D6-A3C7-F02764A9A825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
